@@ -31,9 +31,13 @@ void SceneMenu::draw()
 {
 	int brightness = 0;
 	LONGLONG  count = GetNowHiPerformanceCount();
-	while(GetNowHiPerformanceCount() - count <= 30000)
+	while(GetNowHiPerformanceCount() - count <= 60000)
 	{	
+		DrawString(Game::kScreenWidth / 2, 100, "", GetColor(255, 255, 255));
+		
+
 		// ƒRƒƒ“ƒg‚Ì“_–Å
+
 		if (brightness == 0)
 		{
 			brightness++;
