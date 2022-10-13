@@ -31,8 +31,9 @@ void SceneMenu::draw()
 {
 	int brightness = 0;
 	LONGLONG  count = GetNowHiPerformanceCount();
-	while(GetNowHiPerformanceCount() - count > 30000)
+	while(GetNowHiPerformanceCount() - count <= 30000)
 	{	
+		// コメントの点滅
 		if (brightness == 0)
 		{
 			brightness++;
@@ -42,6 +43,7 @@ void SceneMenu::draw()
 			brightness = 0;
 		}
 		
+
 		if (brightness == 0)
 		{
 			DrawString(Game::kScreenWidth / 2, Game::kScreenHeight / 2,  "Bボタンを押してスタート", GetColor(255, 255, 255));
@@ -51,5 +53,4 @@ void SceneMenu::draw()
 			DrawString(Game::kScreenWidth / 2, Game::kScreenHeight / 2, "Bボタンを押してスタート", GetColor(125, 125, 125));
 		}
 	}
-	 // komennto
 }
