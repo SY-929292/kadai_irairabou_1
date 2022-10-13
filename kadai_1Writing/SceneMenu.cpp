@@ -51,5 +51,5 @@ void SceneMenu::draw()
 			DrawString(Game::kScreenWidth / 2, Game::kScreenHeight / 2, "Bボタンを押してスタート", GetColor(125, 125, 125));
 		}
 	}
-	 
+	 // komennto
 }
