@@ -12,8 +12,6 @@ void SceneMenu::init()
 	m_isEnd = false;
 }
 
-// ‚¬‚”
-
 SceneBase* SceneMenu::update()
 {
 	
@@ -22,13 +20,9 @@ SceneBase* SceneMenu::update()
 	if (padState & PAD_INPUT_1)
 	{
 		// main‚ÉØ‚è‘Ö‚¦
-		return(new scenemain);
+		return(new SceneMain);
 	}
-	else if (keystate & pad_input_2)
-	{
-		// test‚ÉØ‚è‘Ö‚¦
-		return (new scenefinish);
-	}
+	
 	return this;
 }
 

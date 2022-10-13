@@ -2,7 +2,6 @@
 
 #include "SceneMain.h"
 #include "SceneMenu.h"
-#include "SceneFinish.h"
 
 void SceneMain::init()
 {
