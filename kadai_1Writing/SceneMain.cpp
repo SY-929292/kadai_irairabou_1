@@ -26,10 +26,7 @@ SceneBase* SceneMain::update()
 	}
 
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-	if (padState & PAD_INPUT_2)
-	{
-		PlaySoundFile("sound/cursor1.mp3", DX_PLAYTYPE_NORMAL);
-	}
+	
 	if (padState & PAD_INPUT_3)
 	{
 		return (new SceneMenu);

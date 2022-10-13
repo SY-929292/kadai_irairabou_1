@@ -4,7 +4,7 @@
 #include "SceneMenu.h"
 #include "SceneMain.h"
 #include "SceneResult.h"
-#include "SceneFinish.h"
+
 
 SceneManager::SceneManager()
 {

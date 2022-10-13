@@ -141,23 +141,19 @@
   <ItemGroup>
     <ClCompile Include="Maze.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="SceneFinish.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="mouse.cpp" />
     <ClCompile Include="pad.cpp" />
     <ClCompile Include="SceneResult.cpp" />
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="SceneMain.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="SelectMenu.cpp" />
+    <ClCompile Include="SceneMenu.cpp" />
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Maze.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="SceneFinish.h" />
     <ClInclude Include="game.h" />
-    <ClInclude Include="mouse.h" />
     <ClInclude Include="pad.h" />
     <ClInclude Include="SceneResult.h" />
     <ClInclude Include="SceneBase.h" />
