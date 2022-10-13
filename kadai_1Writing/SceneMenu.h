@@ -6,7 +6,7 @@ class SceneMenu : public SceneBase
 public:
 	SceneMenu()
 	{
-		m_textPosY = 0;
+		m_textPosY = 400;
 		m_textVecY = 0;
 		m_isEnd = false;
 	}

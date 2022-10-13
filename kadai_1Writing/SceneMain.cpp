@@ -2,6 +2,7 @@
 
 #include "SceneMain.h"
 #include "SceneMenu.h"
+#include "SceneResult.h"
 
 void SceneMain::init()
 {
@@ -18,9 +19,9 @@ SceneBase* SceneMain::update()
 		m_textPosX = 0;
 		m_textVecX = 4;
 	}
-	if (m_textPosX > 300)
+	if (m_textPosX > 600)
 	{
-		m_textPosX = 300;
+		m_textPosX = 0;
 		m_textVecX = -4;
 	}
 
@@ -28,8 +29,16 @@ SceneBase* SceneMain::update()
 	
 	if (padState & PAD_INPUT_3)
 	{
-		return (new SceneMenu);
+		if (m_textPosX >= 300)
+		{
+			return(new SceneResult);
+		}
+		else
+		{
+			return (new SceneMenu);
+		}
 	}
+	
 
 	return this;
 }

@@ -28,7 +28,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	while (ProcessMessage() == 0)
 	{
-		LONGLONG  time = GetNowHiPerformanceCount();
+		LONGLONG  time1 = GetNowHiPerformanceCount();
 		// ‰æ–Ê‚ÌƒNƒŠƒA
 		ClearDrawScreen();
 
@@ -42,7 +42,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		if (CheckHitKey(KEY_INPUT_ESCAPE))	break;
 
 		// fps‚ð60‚ÉŒÅ’è
-		while (GetNowHiPerformanceCount() - time < 16667)
+		while (GetNowHiPerformanceCount() - time1 < 16667)
 		{
 		}
 	}
