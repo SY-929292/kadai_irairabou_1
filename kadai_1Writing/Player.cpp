@@ -1,23 +1,24 @@
-//#include "DxLib.h"
-//#include <cassert>
+//
 //#include "game.h"
 //#include "player.h"
 //
+//#include "SceneMain.h"
 //
 //namespace
 //{
-//	// キャラクターアニメーション１コマ当たりのフレーム数
-//	constexpr int kAnimeChangeFrame = 8;
+//	// X方向、Y方向の最大速度
+//	constexpr float kSpeedMax = 8.0f;
+//	constexpr float kAcc = 0.4f;
+//	// ショットの発射間隔
+//	constexpr int kShotInterval = 16;
 //}
 //
 //Player::Player()
 //{
-//	// 初期化
-//	for (auto& handle : m_handle)
-//	{
-//		handle = -1;
-//	}
-//	m_animeFrame = 0;
+//	m_handle = -1;
+//	m_pMain = nullptr;
+//
+//	m_shotInterval = 0;
 //}
 //
 //Player::~Player()
@@ -27,60 +28,62 @@
 //
 //void Player::init()
 //{
-//	m_pos.x = Game::kScreenWidth / 2 - kGraphicSizeX / 2;
-//	m_pos.y = Game::kScreenHeight / 2 - kGraphicSizeY / 2;
+//	m_pos.x = 100.0f;
+//	m_pos.y = 100.0f;
 //	m_vec.x = 0.0f;
 //	m_vec.y = 0.0f;
-//
-//	m_animeNo = 0;
-//	m_animeFrame = 0;
+//	m_shotInterval = 0;
 //}
 //
 //void Player::update()
 //{
 //	// パッド(もしくはキーボード)からの入力を取得する
 //	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-//	bool isKey = false;
+//
+//	// ショットを撃つ処理
+//	m_shotInterval--;
+//	if (m_shotInterval < 0) m_shotInterval = 0;
+//	if ((padState & PAD_INPUT_1) && (m_shotInterval <= 0))
+//	{
+//		if (m_pMain->createShot(getPos()))
+//		{
+//			m_shotInterval = kShotInterval;
+//		}
+//	}
+//
 //	if (padState & PAD_INPUT_UP)
 //	{
-//		m_dirNo = 3;
-//		isKey = true;
-//		m_pos.x += 4.0f;
+//		m_vec.y -= kAcc;
+//		if (m_vec.y < -kSpeedMax)	m_vec.y = -kSpeedMax;
 //	}
-//	if (padState & PAD_INPUT_DOWN)
+//	else if (padState & PAD_INPUT_DOWN)
 //	{
-//		m_dirNo = 0;
-//		isKey = true;
-//		m_pos.x += 4.0f;
+//		m_vec.y += kAcc;
+//		if (m_vec.y > kSpeedMax)	m_vec.y = kSpeedMax;
+//	}
+//	else
+//	{
+//		m_vec.y *= 0.9f;
 //	}
 //	if (padState & PAD_INPUT_LEFT)
 //	{
-//		m_dirNo = 1;
-//		isKey = true;
-//		m_pos.y += 4.0f;
+//		m_vec.x -= kAcc;
+//		if (m_vec.x < -kSpeedMax)	m_vec.x = -kSpeedMax;
 //	}
-//	if (padState & PAD_INPUT_RIGHT)
+//	else if (padState & PAD_INPUT_RIGHT)
 //	{
-//		m_dirNo = 2;
-//		isKey = true;
-//		m_pos.y += 4.0f;
+//		m_vec.x += kAcc;
+//		if (m_vec.x > kSpeedMax)	m_vec.x = kSpeedMax;
 //	}
-//
-//	// キャラクターアニメーション
-//	if (isKey) m_animeFrame++;
-//	m_animeFrame++;
-//	if (m_animeFrame >= kGraphicDivX * kAnimeChangeFrame)
+//	else
 //	{
-//		m_animeFrame = 0;
+//		m_vec.x *= 0.9f;
 //	}
-//
-//	int tempAnimeNo = m_animeFrame / kAnimeChangeFrame;
-//	m_animeNo = m_dirNo * kGraphicDivX + tempAnimeNo;
+//	m_pos += m_vec;
 //}
 //
 //void Player::draw()
 //{
-//	DrawGraph(static_cast<int>(m_pos.x), static_cast<int>(m_pos.y), m_handle, true);
-//	//DrawExtendGraph(32, 32, Game::kScreenWidth - 32, Game::kScreenHight - 32, m_handle[m_animeNo]);
+//	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
 //
 //}

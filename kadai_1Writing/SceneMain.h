@@ -1,4 +1,5 @@
 #pragma once
+#include "Maze.h"
 #include "SceneBase.h"
 
 class SceneMain : public SceneBase
@@ -21,4 +22,5 @@ private:
 	// テキスト表示位置変更
 	int m_textPosX;
 	int m_textVecX;
+	Maze m_Maze;
 };

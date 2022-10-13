@@ -18,7 +18,7 @@ SceneBase* SceneMenu::update()
 	
 
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-	if (padState & PAD_INPUT_1)
+	if (padState & PAD_INPUT_2)
 	{
 		// mainÇ…êÿÇËë÷Ç¶
 		return(new SceneMain);
@@ -31,7 +31,7 @@ void SceneMenu::draw()
 {
 	int brightness = 0;
 	LONGLONG  count = GetNowHiPerformanceCount();
-	while(GetNowHiPerformanceCount() - count <= 60000)
+	while(GetNowHiPerformanceCount() - count < 60000)
 	{	
 		DrawString(Game::kScreenWidth / 2, 100, "", GetColor(255, 255, 255));
 		

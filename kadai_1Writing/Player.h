@@ -11,8 +11,8 @@ public:
 	// プレイヤーグラフィック分割数
 
 	// プレイヤーグラフィックサイズ
-	static constexpr int kGraphicSizeX = 32;
-	static constexpr int kGraphicSizeY = 32;
+	static constexpr int kGraphicSizeX = 40;
+	static constexpr int kGraphicSizeY = 40;
 
 public:
 	Player();
