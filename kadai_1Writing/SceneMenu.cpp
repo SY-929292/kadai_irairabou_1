@@ -12,6 +12,8 @@ void SceneMenu::init()
 	m_isEnd = false;
 }
 
+// ‚¬‚”
+
 SceneBase* SceneMenu::update()
 {
 	
