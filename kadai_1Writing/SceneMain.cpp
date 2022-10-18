@@ -5,33 +5,37 @@
 #include "SceneMenu.h"
 #include "SceneResult.h"
 
+namespace
+{
+	const char* const kPlayerGraphFilename = "GameGraphic/Player.bmp";
+}
+
+SceneMain::SceneMain()
+{
+	m_hPlayerGraphic = -1;
+}
+
 void SceneMain::init()
 {
-	m_textPosX = 0;
-	m_textVecX = 4;
+	m_hPlayerGraphic = LoadGraph("irasuto/Player.bmp");
+
+	m_player.setHandle(m_hPlayerGraphic);
+	m_player.init();
+	m_player.setMain(this);
+	
 }
 
 SceneBase* SceneMain::update()
 {
+	m_player.update();
 
-	// 文字の移動
-	m_textPosX += m_textVecX;
-	if (m_textPosX < 0)
-	{
-		m_textPosX = 0;
-		m_textVecX = 4;
-	}
-	if (m_textPosX > 600)
-	{
-		m_textPosX = 0;
-		m_textVecX = -4;
-	}
+
 
 	int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	
-	if (padState & PAD_INPUT_3)
+	/*if (padState & PAD_INPUT_3)
 	{
-		if (m_textPosX >= 300)
+		if ()
 		{
 			return(new SceneResult);
 		}
@@ -39,7 +43,7 @@ SceneBase* SceneMain::update()
 		{
 			return (new SceneMenu);
 		}
-	}
+	}*/
 	
 
 	return this;
@@ -48,10 +52,9 @@ SceneBase* SceneMain::update()
 
 void SceneMain::draw()
 {
-	
-	DrawString(m_textPosX, 0, "ゲーム画面", GetColor(255, 255, 255));
-	DrawString(25, 55, "スタート位置", GetColor(255, 255, 255));
-	DrawString(900, 900, "ゴール", GetColor(255, 255, 255));
+	DrawString(60, 60, "スタート", GetColor(255, 255, 255));
+	DrawString(900, 970, "ゴール", GetColor(255, 255, 255));
 
+	m_player.draw();
 	m_Maze.draw();
 }

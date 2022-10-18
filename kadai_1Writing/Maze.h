@@ -6,5 +6,11 @@ public:
 	Maze(){}
 	virtual ~Maze() {}
 
+	virtual void init();
 	virtual void draw ();
+
+private:
+	
+
+	
 };
