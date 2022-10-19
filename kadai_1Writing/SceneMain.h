@@ -18,7 +18,6 @@ public:
 	virtual SceneBase* update() override;
 	// 毎フレームの描画
 	virtual void draw() override;
-
 	
 
 private:
@@ -31,4 +30,6 @@ private:
 	// プレイヤーのグラフィックハンドル
 	int m_hPlayerGraphic;
 
+	// 背景のグラフィックハンドル
+	int m_hBackGraphic;
 };

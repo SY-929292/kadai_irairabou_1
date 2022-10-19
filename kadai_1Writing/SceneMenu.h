@@ -20,6 +20,7 @@ public:
 	virtual void draw() override;
 
 	virtual bool isEnd() { return m_isEnd; }
+
 private:
 	// テキスト表示位置変更
 	int m_textPosY;

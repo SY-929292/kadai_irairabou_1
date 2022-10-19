@@ -2,6 +2,7 @@
 
 #include "game.h"
 #include "player.h"
+#include "Maze.h"
 
 #include "SceneMain.h"
 
@@ -77,64 +78,91 @@ void Player::update()
 		m_vec.x *= 0.9f;
 	}
 	m_pos += m_vec;
-
-	// PlayerçsìÆîÕàÕêßå¿
-	// 
-	// 
-	// ÉXÉ^Å[Égà íu
-	// ÉâÉCÉìÇÃîªíË
-	//if (m_pos.x < 50) // ÇP
-	//{
-	//	m_pos.x = 50;
-	//}
-	//if (m_pos.y < 50)// ÇQÅAÇVÅAÇPÇT
-	//{
-	//	m_pos.y = 50;
-	//}
-	//if (m_pos.y < 915 && m_pos.x + kGraphicSizeX > 900) // ÇTÅAÇPÇR
-	//{
-	//	m_pos.x = 900 - kGraphicSizeX;
-	//}
-	//if(m_pos.x < 800 && m_pos.y + kGraphicSizeY > 150 && m_pos.y <150) // ÇR
-	//{
-	//	m_pos.y = 150 - kGraphicSizeY;
-	//}
-	//if (m_pos.y + kGraphicSizeY > 150 && m_pos.y < 350 && m_pos.x < 800) // ÇU
-	//{
-	//	m_pos.y = 350;
-	//	//m_pos.x = 800;
-	//}
-
-	//if (m_pos.x + kGraphicSizeX > 300 && m_pos.y + kGraphicSizeY > 450 && m_pos.y < 450) // ÇW
-	//{
-	//	m_pos.y = 450 - kGraphicSizeY;
-	//}
-
-	//if (m_pos.x < 800 && m_pos.y < 350 && m_pos.y + kGraphicSizeY > 350 )
-	//{
-	//	m_pos.y = 350;
-	//}
-
-	/*if (m_pos.x > 150 - m_size.x)
-	{
-		m_pos.x = 150 - m_size.x;
-	}
-	if (m_pos.y > 150 - m_size.y)
-	{
-		m_pos.y = 150 - m_size.y;
-	}
-	*/
-	
 }
 
 
 void Player::draw()
 {
+	DrawFormatString(0, 0, GetColor(255, 255, 255), "%f", getPos());
+	//DrawFormatString(0, 10, GetColor(255, 255, 255), "%f", Maze::getPosOut());
+
 	//if (m_isDead) return;
+
 	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
 }
 
-bool Player::isCol(Player& player)
+bool Player::isCol(Maze& Maze)
 {
-	return 0;
+
+	float playerLeft = getPos().x;
+	float playerRight = getPos().x + getSize().x;
+	float playerTop = getPos().y;
+	float playerBottom = getPos().y + getSize().y;
+
+	float outLineLeft = Maze.getPosOut().x;
+	float outLineRight = Maze.getPosOut().x + Maze.getSizeOut().x;
+	float outLineTop = Maze.getPosOut().y;
+	float outLineBottom = Maze.getPosOut().y + Maze.getSizeOut().y;
+
+	float LineBox1Left = Maze.getPosBox1().x;
+	float LineBox1Right = Maze.getPosBox1().x + Maze.getSizeBox1().x;
+	float LineBox1Top = Maze.getPosBox1().y;
+	float LineBox1Bottom = Maze.getPosBox1().y + Maze.getSizeBox1().y;
+
+	float LineBox2Left = Maze.getPosBox2().x;
+	float LineBox2Right = Maze.getPosBox2().x + Maze.getSizeBox2().x;
+	float LineBox2Top = Maze.getPosBox2().y;
+	float LineBox2Bottom = Maze.getPosBox2().y + Maze.getSizeBox2().y;
+
+	float LineBox3Left = Maze.getPosBox3().x;
+	float LineBox3Right = Maze.getPosBox3().x + Maze.getSizeBox3().x;
+	float LineBox3Top = Maze.getPosBox3().y;
+	float LineBox3Bottom = Maze.getPosBox3().y + Maze.getSizeBox3().y;
+
+	float LineBox4Left = Maze.getPosBox4().x;
+	float LineBox4Right = Maze.getPosBox4().x + Maze.getSizeBox4().x;
+	float LineBox4Top = Maze.getPosBox4().y;
+	float LineBox4Bottom = Maze.getPosBox4().y + Maze.getSizeBox4().y;
+
+	float LineGoalLeft = Maze.getPosGoal().x;
+	float LineGoalRight = Maze.getPosGoal().x + Maze.getSizeGoal().x;
+	float LineGoalTop = Maze.getPosGoal().y;
+	float LineGoalBottom = Maze.getPosGoal().y + Maze.getSizeGoal().y;
+
+	if (playerLeft < outLineLeft) { return false; }
+	if (playerRight > outLineRight) { return false; }
+	if (playerTop < outLineTop) { return false; }
+	if (playerBottom > outLineBottom) { return false; }
+
+	if (playerLeft > LineBox1Right) { return false; }
+	if (playerRight < LineBox1Left) { return false; }
+	if (playerTop > LineBox1Bottom) { return false; }
+	if (playerBottom > LineBox1Top) { return false; }
+
+	if (playerLeft > LineBox2Right) { return false; }
+	if (playerRight < LineBox2Left) { return false; }
+	if (playerTop > LineBox2Bottom) { return false; }
+	if (playerBottom > LineBox2Top) { return false; }
+
+	if (playerLeft > LineBox3Right) { return false; }
+	if (playerRight < LineBox3Left) { return false; }
+	if (playerTop > LineBox3Bottom) { return false; }
+	if (playerBottom > LineBox3Top) { return false; }
+
+	if (playerLeft > LineBox4Right) { return false; }
+	if (playerRight < LineBox4Left) { return false; }
+	if (playerTop > LineBox4Bottom) { return false; }
+	if (playerBottom > LineBox4Top) { return false; }
+
+	if (playerRight > LineGoalLeft)
+	{
+		if(playerTop >= LineGoalTop)
+		{
+			return (new SceneResult); 
+		}
+
+	}
+	
+	return true;
+
 }

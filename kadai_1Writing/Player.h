@@ -1,17 +1,13 @@
 #pragma once
 
 #include "Vec2.h"
+#include "Maze.h"
 
 class SceneMain;
+class Maze;
 
 class Player
 {
-public:
-
-	// プレイヤーグラフィックサイズ
-	static constexpr int kGraphicSizeX = 70;
-	static constexpr int kGraphicSizeY = 70;
-
 public:
 	Player();
 	virtual ~Player();
@@ -30,13 +26,14 @@ public:
 	// 描画
 	void draw();
 	// 車との衝突判定
-	bool isCol(Player& player);
+	bool isCol(Maze& Maze);
 
 	// 位置の取得
 	Vec2 getPos() const { return m_pos; }
 	// サイズの取得
 	//Vec2 getGraphSize() const { return m_graphSize; }
-	Vec2 getColSize() const { return m_size; }
+
+	Vec2 getSize() const { return m_size; }
 
 	// 死亡設定
 	void setDead(bool isDead) { m_isDead = isDead; }

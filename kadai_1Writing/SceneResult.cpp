@@ -43,5 +43,6 @@ SceneBase* SceneResult::update()
 
 void SceneResult::draw()
 {
-	DrawString(m_textPosY, 0, "リザルト",GetColor(255, 255, 255));
+	DrawString(0, m_textPosY, "ゴール成功",GetColor(255, 255, 255));
+	DrawString(0, 0, "Aボタンでメニューに戻る", GetColor(255, 255, 255));
 }
