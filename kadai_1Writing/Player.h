@@ -13,7 +13,7 @@ public:
 	virtual ~Player();
 
 	// グラフィックデータ設定
-	void setHandle(int handle);
+	void setHandlePlayer(int handle);
 
 	// プレイヤーの初期化
 	void init();

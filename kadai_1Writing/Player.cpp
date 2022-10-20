@@ -26,7 +26,7 @@ Player::~Player()
 
 }
 
-void Player::setHandle(int handle)
+void Player::setHandlePlayer(int handle)
 {
 	m_handle = handle;
 	GetGraphSizeF(m_handle, &m_size.x, &m_size.y);
@@ -35,8 +35,8 @@ void Player::setHandle(int handle)
 
 void Player::init()
 {
-	m_pos.x = 80.0f;
-	m_pos.y = 80.0f;
+	m_pos.x = 130.0f;
+	m_pos.y = 70.0f;
 	/*m_size.x = 0.0f;
 	m_size.y = 0.0f;*/
 	m_vec.x = 0.0f;
@@ -83,11 +83,6 @@ void Player::update()
 
 void Player::draw()
 {
-	DrawFormatString(0, 0, GetColor(255, 255, 255), "%f", getPos());
-	//DrawFormatString(0, 10, GetColor(255, 255, 255), "%f", Maze::getPosOut());
-
-	//if (m_isDead) return;
-
 	DrawGraphF(m_pos.x, m_pos.y, m_handle, true);
 }
 

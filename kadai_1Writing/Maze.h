@@ -3,16 +3,15 @@
 #include"Vec2.h"
 #include"SceneResult.h"
 
+class SceneMain;
 class Maze
 {
 public:
 	Maze(){}
-	virtual ~Maze() {}
+	virtual ~Maze(){}
 
+	//	初期化
 	virtual void init();
-
-	// グラフィックデータ設定
-	void setHandle(int background, int boxhandle);
 
 	// 外枠のポジション
 	Vec2 getPosOut() const { return m_outPos; }
@@ -46,10 +45,13 @@ public:
 
 	virtual void draw ();
 
+	// SceneMainクラスのポインタ設定
+	void setMain(SceneMain* pMain) { m_pMain = pMain; }
+
 private:
 	
-	// 背景のハンドル
-	int m_background;
+	// SceneMainのポインタ
+	SceneMain* m_pMain;
 
 	// ボックスのハンドル
 	int m_boxHandle;

@@ -1,4 +1,6 @@
 #pragma once
+
+#include "game.h"
 #include "Maze.h"
 #include "SceneBase.h"
 #include "Player.h"
@@ -12,7 +14,7 @@ public:
 	// ‰Šú‰»
 	virtual void init() override;
 	// I—¹ˆ—
-	virtual void end() override {}
+	virtual void end() override;
 
 	// –ˆƒtƒŒ[ƒ€‚Ìˆ—
 	virtual SceneBase* update() override;

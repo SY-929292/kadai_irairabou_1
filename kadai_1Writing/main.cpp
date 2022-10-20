@@ -41,6 +41,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		// escƒL[‚ğ‰Ÿ‚µ‚½‚çI—¹‚·‚é
 		if (CheckHitKey(KEY_INPUT_ESCAPE))	break;
 
+		// 
+		int padState = GetJoypadInputState(DX_INPUT_KEY_PAD1);
+		if (padState & PAD_INPUT_3) break;
+
 		// fps‚ğ60‚ÉŒÅ’è
 		while (GetNowHiPerformanceCount() - time1 < 16667)
 		{

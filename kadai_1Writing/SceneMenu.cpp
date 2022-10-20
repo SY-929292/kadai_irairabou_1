@@ -31,8 +31,9 @@ void SceneMenu::draw()
 	LONGLONG  count = GetNowHiPerformanceCount();
 	while(GetNowHiPerformanceCount() - count < 60000)
 	{	
-		DrawString(Game::kScreenWidth / 2, 100, "", GetColor(255, 255, 255));
-		
+		DrawString(200, 450, "壁などに触れるとスタート地点に戻ってしまう", GetColor(255, 255, 255));
+		DrawString(600, 450, "触れないように慎重にゴールへ向かおう", GetColor(255, 255, 255));
+		DrawString(400, 850, "ESCボタン、Xボタンで強制終了します。", GetColor(255, 255, 255));
 
 		// コメントの点滅
 
