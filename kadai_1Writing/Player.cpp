@@ -134,35 +134,16 @@ bool Player::isCol(Maze& Maze)
 	if (playerTop < outLineTop) { return false; }
 	if (playerBottom > outLineBottom) { return false; }
 
-	if (playerLeft > LineBox1Right) { return false; }
-	if (playerRight < LineBox1Left) { return false; }
-	if (playerTop > LineBox1Bottom) { return false; }
-	if (playerBottom > LineBox1Top) { return false; }
+	if (playerLeft < LineBox1Right && playerBottom > LineBox1Top && playerTop < LineBox1Bottom) { return false; }
 
-	if (playerLeft > LineBox2Right) { return false; }
-	if (playerRight < LineBox2Left) { return false; }
-	if (playerTop > LineBox2Bottom) { return false; }
-	if (playerBottom > LineBox2Top) { return false; }
+	if (playerRight > LineBox2Left && playerBottom > LineBox2Top && playerTop < LineBox2Bottom) { return false; }
 
-	if (playerLeft > LineBox3Right) { return false; }
-	if (playerRight < LineBox3Left) { return false; }
-	if (playerTop > LineBox3Bottom) { return false; }
-	if (playerBottom > LineBox3Top) { return false; }
+	if (playerLeft < LineBox3Right && playerBottom > LineBox3Top && playerTop < LineBox3Bottom) { return false; }
 
-	if (playerLeft > LineBox4Right) { return false; }
-	if (playerRight < LineBox4Left) { return false; }
-	if (playerTop > LineBox4Bottom) { return false; }
-	if (playerBottom > LineBox4Top) { return false; }
+	if (playerRight > LineBox4Left && playerBottom > LineBox4Top && playerTop < LineBox4Bottom) { return false; }
 
-	if (playerRight > LineGoalLeft)
-	{
-		if(playerTop >= LineGoalTop)
-		{
-			return (new SceneResult); 
-		}
+	if (playerTop >= LineGoalTop && playerRight > LineGoalLeft) { return false; }
 
-	}
-	
 	return true;
 
 }
